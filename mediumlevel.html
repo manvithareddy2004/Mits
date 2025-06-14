@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MITS Homepage</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #eef2f3, #8e9eab);
+      }
+
+      #sidebar {
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.85);
+      }
+
+      #internshipBanner {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo-card {
+        background: white;
+        border-radius: 0.5rem;
+        padding: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .logo-card:hover {
+        transform: scale(1.05);
+      }
+    </style>
+    <script>
+      function toggleSidebar() {
+        document
+          .getElementById("sidebar")
+          .classList.toggle("-translate-x-full");
+      }
+
+      window.addEventListener("scroll", () => {
+        const banner = document.getElementById("internshipBanner");
+        if (window.scrollY > 100) {
+          banner.classList.remove("hidden");
+        } else {
+          banner.classList.add("hidden");
+        }
+      });
+    </script>
+  </head>
+  <body class="text-gray-800">
+    <!-- Sticky Internship Banner -->
+    <div
+      id="internshipBanner"
+      class="hidden fixed top-0 left-0 w-full bg-blue-600 text-white px-6 py-3 text-sm font-semibold z-50 flex items-center gap-2"
+    >
+      🚀 Apply Now for Internships at MITS!
+    </div>
+
+    <!-- Navigation Bar -->
+    <header
+      class="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-30"
+    >
+      <button onclick="toggleSidebar()" class="text-2xl md:hidden">☰</button>
+      <h1 class="text-2xl font-bold text-blue-700">MITS</h1>
+      <nav class="hidden md:flex gap-6 text-lg">
+        <a href="#" class="hover:text-blue-600">Home</a>
+        <a href="#" class="hover:text-blue-600">Tutorials</a>
+        <a href="#" class="hover:text-blue-600">Projects</a>
+        <a href="#" class="hover:text-blue-600">About Us</a>
+        <a href="#" class="hover:text-blue-600">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="fixed top-0 left-0 w-64 h-full shadow-lg transform -translate-x-full transition-transform z-40"
+    >
+      <div class="p-4 border-b font-bold text-lg bg-blue-100">MITS Menu</div>
+      <ul class="p-4 space-y-4 text-blue-700">
+        <li><a href="#" class="hover:underline">Internship Application</a></li>
+        <li><a href="#" class="hover:underline">Offer Letter Generation</a></li>
+        <li>
+          <a href="#" class="hover:underline">Certificate Verification</a>
+        </li>
+        <li><a href="#" class="hover:underline">Join Team</a></li>
+        <li><a href="#" class="hover:underline">Contact Info</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="mt-6 px-4">
+      <!-- Hero Section -->
+      <section
+        class="text-center py-12 bg-gradient-to-r from-blue-100 to-blue-200 rounded-xl shadow-xl mx-4"
+      >
+        <h2 class="text-4xl font-bold mb-4 text-gray-800">
+          Welcome to <span class="text-blue-700">MITS</span>
+        </h2>
+        <p class="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
+          Empowering students through technology-driven learning and real-world
+          projects. Explore tutorials, build hands-on projects, and join
+          internship programs.
+        </p>
+        <div class="space-x-4">
+          <button
+            class="bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+          >
+            Start Learning
+          </button>
+          <button
+            class="bg-green-600 text-white px-5 py-2 rounded-lg shadow hover:bg-green-700 transition"
+          >
+            Browse Projects
+          </button>
+        </div>
+      </section>
+
+      <!-- University Logos Section -->
+      <section class="my-12">
+        <h3 class="text-2xl font-semibold text-center mb-6 text-gray-800">
+          🎓 Trusted by Students from Top Universities
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-6 px-6">
+          <div class="logo-card">
+            <img
+              src="https://dummyimage.com/100x50/000/fff&text=Univ1"
+              alt="University 1"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="https://dummyimage.com/100x50/000/fff&text=Univ2"
+              alt="University 2"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="https://dummyimage.com/100x50/000/fff&text=Univ3"
+              alt="University 3"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="https://dummyimage.com/100x50/000/fff&text=Univ4"
+              alt="University 4"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="https://dummyimage.com/100x50/000/fff&text=Univ5"
+              alt="University 5"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="https://dummyimage.com/100x50/000/fff&text=Univ6"
+              alt="University 6"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="https://dummyimage.com/100x50/000/fff&text=Univ7"
+              alt="University 7"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="https://dummyimage.com/100x50/000/fff&text=Univ8"
+              alt="University 8"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="https://dummyimage.com/100x50/000/fff&text=Univ9"
+              alt="University 9"
+            />
+          </div>
+          <div class="logo-card">
+            <img
+              src="https://dummyimage.com/100x50/000/fff&text=Univ10"
+              alt="University 10"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6 mt-12">
+      <div class="text-center space-x-6">
+        <a href="#" class="hover:underline">Home</a>
+        <a href="#" class="hover:underline">Tutorials</a>
+        <a href="#" class="hover:underline">Projects</a>
+        <a href="#" class="hover:underline">Contact</a>
+      </div>
+      <p class="text-center text-sm mt-4">© 2025 MITS. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

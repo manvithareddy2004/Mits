@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock + Stopwatch</title>
+    <style>
+      /* Background & Base Styles */
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(to right, #2c3e50, #4b6cb7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Glass Card */
+      .container {
+        background: rgba(255, 255, 255, 0.08);
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        border-radius: 15px;
+        padding: 40px 30px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(20px);
+        text-align: center;
+        color: #ffffff;
+        width: 90%;
+        max-width: 400px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: #f1f1f1;
+      }
+
+      .time-display,
+      .stopwatch-display {
+        font-size: 2.4rem;
+        margin: 15px 0;
+        font-weight: 600;
+        color: #fffae3;
+      }
+
+      /* Buttons */
+      .buttons {
+        margin-top: 20px;
+      }
+
+      button {
+        padding: 10px 20px;
+        margin: 6px;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        color: white;
+        transition: 0.2s ease-in-out;
+      }
+
+      button.start {
+        background: #00c853;
+      }
+
+      button.start:hover {
+        background: #00b94e;
+      }
+
+      button.stop {
+        background: #d50000;
+      }
+
+      button.stop:hover {
+        background: #b71c1c;
+      }
+
+      button.reset {
+        background: #2979ff;
+      }
+
+      button.reset:hover {
+        background: #1565c0;
+      }
+
+      @media (max-width: 500px) {
+        .container {
+          padding: 25px 20px;
+        }
+
+        .time-display,
+        .stopwatch-display {
+          font-size: 2rem;
+        }
+
+        button {
+          width: 100%;
+          margin: 10px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>⏳ Stopwatch + Clock</h1>
+      <div class="time-display" id="clock">--:--:--</div>
+      <div class="stopwatch-display" id="stopwatch">00:00:00</div>
+      <div class="buttons">
+        <button class="start" onclick="startStopwatch()">Start</button>
+        <button class="stop" onclick="stopStopwatch()">Stop</button>
+        <button class="reset" onclick="resetStopwatch()">Reset</button>
+      </div>
+    </div>
+
+    <script>
+      // Clock
+      function updateClock() {
+        const now = new Date();
+        const time = now.toLocaleTimeString();
+        document.getElementById("clock").textContent = time;
+      }
+      setInterval(updateClock, 1000);
+      updateClock();
+
+      // Stopwatch
+      let stopwatchInterval;
+      let elapsedSeconds = 0;
+      let running = false;
+
+      function updateStopwatch() {
+        const hrs = String(Math.floor(elapsedSeconds / 3600)).padStart(2, "0");
+        const mins = String(Math.floor((elapsedSeconds % 3600) / 60)).padStart(
+          2,
+          "0"
+        );
+        const secs = String(elapsedSeconds % 60).padStart(2, "0");
+        document.getElementById(
+          "stopwatch"
+        ).textContent = `${hrs}:${mins}:${secs}`;
+      }
+
+      function startStopwatch() {
+        if (running) return;
+        running = true;
+        stopwatchInterval = setInterval(() => {
+          elapsedSeconds++;
+          updateStopwatch();
+        }, 1000);
+      }
+
+      function stopStopwatch() {
+        clearInterval(stopwatchInterval);
+        running = false;
+      }
+
+      function resetStopwatch() {
+        stopStopwatch();
+        elapsedSeconds = 0;
+        updateStopwatch();
+      }
+    </script>
+  </body>
+</html>
